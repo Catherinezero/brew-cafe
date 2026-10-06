@@ -12,6 +12,10 @@
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #f4efe9;
     color: #33271c;
@@ -26,6 +30,9 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 5rem;
+    position: sticky;
+    top:0;
+    z-index:99;
 }
 
 .logo {
@@ -37,13 +44,16 @@ nav {
     color: white;
     text-decoration: none;
     margin-left: 30px;
+    transition: 0.2s;
+}
+.nav-links a:hover{
+    color:#c49c77;
 }
 
-/* 首屏hero区域，增加背景图片+半透明遮罩 */
+/* 首屏hero，稳定咖啡背景图，半透明遮罩 */
 .hero {
     height: 85vh;
-    /* 咖啡店背景图，免费可直接使用 */
-    background-image: linear-gradient(rgba(51, 39, 28, 0.65), rgba(51, 39, 28, 0.65)), url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80");
+    background-image: linear-gradient(rgba(51, 39, 28, 0.65), rgba(51, 39, 28, 0.65)), url("https://img1.360buyimg.com/n1/jfs/t1/196028/36/25712/126872/63711325E01096340/122d300377280082.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -73,12 +83,29 @@ nav {
     color:white;
     border-radius: 8px;
     transition: 0.3s;
+    cursor:pointer;
 }
 .hero button:hover{
     background:#b08b66;
 }
 
-/* 特色卡片区域 */
+/* About Me */
+.about {
+    padding:80px 50px;
+    text-align:center;
+    max-width:1000px;
+    margin:0 auto;
+}
+.about h2{
+    font-size:32px;
+    margin-bottom:24px;
+}
+.about p{
+    font-size:18px;
+    margin-bottom:16px;
+}
+
+/* 特色卡片 */
 .services {
     padding: 80px 50px;
     text-align:center;
@@ -102,8 +129,12 @@ nav {
     border-radius:12px;
     width:280px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
 }
-
+.card:hover{
+    transform: translateY(-8px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
 .card h3{
     margin-bottom:12px;
 }
@@ -120,10 +151,21 @@ nav {
     margin-bottom:20px;
 }
 
-/* 联系区域 */
+/* Contact 区域，带可点击邮箱 */
 .contact{
     padding:60px;
     text-align:center;
+}
+.contact h2{
+    font-size:30px;
+    margin-bottom:20px;
+}
+.contact a{
+    color:#33271c;
+    font-size:18px;
+}
+.contact a:hover{
+    color:#c49c77;
 }
 
 /* 页脚 */
@@ -132,6 +174,21 @@ footer{
     color:white;
     text-align:center;
     padding:20px;
+}
+
+/* 手机适配 */
+@media(max-width:768px){
+    nav{
+        padding:1rem 1.5rem;
+        flex-direction:column;
+        gap:12px;
+    }
+    .nav-links a{
+        margin:0 10px;
+    }
+    .hero h1{
+        font-size:34px;
+    }
 }
     </style>
 </head>
@@ -146,14 +203,25 @@ footer{
         </div>
     </nav>
 
-    <!-- 首屏大图区域 Hero -->
+    <!-- 首屏大图 -->
     <section class="hero">
         <h1>Freshly Roasted Coffee</h1>
         <p>Handcrafted coffee in downtown</p >
         <button>Book a Visit</button>
     </section>
 
-    <!-- 特色板块 -->
+    <!-- About Me 你的介绍 -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I am a front-end developer skilled in building elegant static websites with HTML and CSS.</p >
+        <p>I create custom showcase websites for cafes, homestays, studios and small businesses.</p >
+        <p>My service includes layout design, image & text customization and website deployment.</p >
+        <p>I focus on smooth scrolling, beautiful visuals and clean page structure.</p >
+        <p>Static websites are fast, secure and low maintenance, perfect for business showcase.</p >
+        <p>If you need online booking, order or message form, I can also build dynamic websites for you.</p >
+    </section>
+
+    <!-- 特色卡片 -->
     <section id="services" class="services">
         <h2>Our Features</h2>
         <div class="cards">
@@ -173,19 +241,19 @@ footer{
     </section>
 
     <!-- 营业时间 -->
-    <section id="about" class="hours">
+    <section class="hours">
         <h2>Opening Hours</h2>
         <p>Mon - Fri: 8:00 — 18:00</p >
         <p>Sat - Sun: 9:00 — 17:00</p >
     </section>
 
-    <!-- 联系区域 -->
+    <!-- Contact 这里放邮箱！！点击直接唤起发邮件 -->
     <section id="contact" class="contact">
         <h2>Contact Us</h2>
-        <p>hello@brewcafe.com</p >
+        <p>Email：<a href="mailto:catherinedelancy02@outlook.com">catherinedelancy02@outlook.com</a ></p >
     </section>
 
-    <!-- 页脚版权 -->
+    <!-- 页脚 -->
     <footer>
         <p>© 2026 Brew Café</p >
     </footer>
